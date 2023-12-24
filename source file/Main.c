@@ -21,30 +21,30 @@
 #define GREEN	0x03E0		
 #define RED	    0x7C00		
 
-int random1 = 0;			//Ã¹ ¹øÂ° ³ëÆ® ·£´ı ¹Ù  
-int random2 = 0;			//µÎ ¹øÂ° ³ëÆ® ·£´ı ¹Ù
+int random1 = 0;			//ì²« ë²ˆì§¸ ë…¸íŠ¸ ëœë¤ ë°”  
+int random2 = 0;			//ë‘ ë²ˆì§¸ ë…¸íŠ¸ ëœë¤ ë°”
 
 int position = 0;		
-int score = 0;				//ÇöÀç ½ºÄÚ¾î  
+int score = 0;				//í˜„ì¬ ìŠ¤ì½”ì–´  
 
 unsigned short (* Fb_ptr)[480];	//lcd0 buffer
 
-int start_x1 = 480;			//ºí·Ï ÇöÀç À§Ä¡(xÁÂÇ¥) 
-int start_x2 = 0;			//ºí·Ï ÇöÀç À§Ä¡(yÁÂÇ¥) 
+int start_x1 = 480;			//ë¸”ë¡ í˜„ì¬ ìœ„ì¹˜(xì¢Œí‘œ) 
+int start_x2 = 0;			//ë¸”ë¡ í˜„ì¬ ìœ„ì¹˜(yì¢Œí‘œ) 
 
-int hit_check1 = 0;			//ºí·Ï È÷Æ®Ã¼Å©1 
-int hit_check2 = 0;			//ºí·Ï È÷Æ®Ã¼Å©2
+int hit_check1 = 0;			//ë¸”ë¡ íˆíŠ¸ì²´í¬1 
+int hit_check2 = 0;			//ë¸”ë¡ íˆíŠ¸ì²´í¬2
 
-int Miss = 0; 		//³ëÆ®¸¦ ³õÄ£ °æ¿ì 
-int Perfect = 0; 	//³ëÆ®¸¦ ¸ÂÈù °æ¿ì 
-int my_clear; 		//Å¬¸®¾î 
+int Miss = 0; 		//ë…¸íŠ¸ë¥¼ ë†“ì¹œ ê²½ìš° 
+int Perfect = 0; 	//ë…¸íŠ¸ë¥¼ ë§íŒ ê²½ìš° 
+int my_clear; 		//í´ë¦¬ì–´ 
 
 int temp_start_x1 = 0;		//block1 & block2 distance store var
 int temp_start_x2 = 0;
 
 int level = 0;		//current game level var
 
-char ptr[10][10] = {"PERFECT","MISS   ","       "};		//»óÅÂ¸¦ ÀúÀåÇÏ´Â ¹è¿­ 
+char ptr[10][10] = {"PERFECT","MISS   ","       "};		//ìƒíƒœë¥¼ ì €ì¥í•˜ëŠ” ë°°ì—´ 
 
 extern unsigned int fullscreen_buffer[272][480];
 extern unsigned int clear_buffer[272][100];
@@ -53,7 +53,7 @@ void Main(void)
 {	
 	/* driver init */
 	MMU_Init();						
-	Uart_Init(115200);							//115200Àº Serial Åë½Å ¼Óµµ(Baud rate)			
+	Uart_Init(115200);							//115200ì€ Serial í†µì‹  ì†ë„(Baud rate)			
 	Graphic_Init();
 	SWITCH_Port_Init();
 	Timer_Init();	
@@ -61,15 +61,15 @@ void Main(void)
 	Buzzer_Init();
 
 	Lcd_Select_Frame_Buffer(1); 
-	Lcd_Draw_BMP(0, 0, tt); 					//½ÃÀÛÈ­¸é¿¡ ÀÌ¹ÌÁö º¸¿©ÁÖ±â(Draw) 
+	Lcd_Draw_BMP(0, 0, tt); 					//ì‹œì‘í™”ë©´ì— ì´ë¯¸ì§€ ë³´ì—¬ì£¼ê¸°(Draw) 
 	Lcd_Copy(1, 0);
 	
 	Lcd_Select_Frame_Buffer(0);
-	Lcd_Make_fullscreen_Buffer(0, 0, ttt); 		//°ÔÀÓ È­¸é ³» ÀÌ¹ÌÁö º¸¿©ÁÖ±â  
+	Lcd_Make_fullscreen_Buffer(0, 0, ttt); 		//ê²Œì„ í™”ë©´ ë‚´ ì´ë¯¸ì§€ ë³´ì—¬ì£¼ê¸°  
 	Lcd_Display_Frame_Buffer(0);	
 }
 
-void game_over(void)  	//40ÃÊ °æ°ú ¶Ç´Â ÃÑ Á¡¼ö°¡ -100Á¡ÀÏ °æ¿ì  
+void game_over(void)  	//40ì´ˆ ê²½ê³¼ ë˜ëŠ” ì´ ì ìˆ˜ê°€ -100ì ì¼ ê²½ìš°  
 {
 	static int first_score = 0;
 	static int second_score = 0;
@@ -79,7 +79,7 @@ void game_over(void)  	//40ÃÊ °æ°ú ¶Ç´Â ÃÑ Á¡¼ö°¡ -100Á¡ÀÏ °æ¿ì
 	rTCON &= ~(0x1<<8);
 	rTCON &= ~(0x1<<12);
 	
-	/*¸¶½ºÅ© ¾º¿ì±â*/
+	/*ë§ˆìŠ¤í¬ ì”Œìš°ê¸°*/
 	rINTSUBMSK |= (0x1<<9);	
 	rINTMSK1 |= (0x1<<31);		
 	
