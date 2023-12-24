@@ -36,7 +36,7 @@
 2. gedit "파일명" 입력 후 코드 작성, 저장
 3. 명령어 make clean 후 make 입력
 4. 명령어 cp MDS2450.bin /tftpboot 입력
-5. BootLoader 가서 확인
+5. BootLoader로 가서 확인
 
 ## 개발 환경
 
