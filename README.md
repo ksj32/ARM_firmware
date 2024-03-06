@@ -1,5 +1,5 @@
 # ARM_firmware Project
-C언어, 삼성 S3C2450 솔루션 보드를 이용하여 펌웨어 프로그램을 제작한 프로젝트입니다.
+C언어, 삼성 S3C2450 솔루션 보드를 이용하여 만든 펌웨어 팀프로젝트입니다.
 
 ![그림1](https://github.com/ksj32/ARM_firmware/assets/77198732/0f9d1f67-029c-42cf-9c72-bceefcfd10cd)
 
