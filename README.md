@@ -33,7 +33,7 @@ C언어, 삼성 S3C2450 솔루션 보드를 이용하여 만든 펌웨어 팀프
 ## 실행 방법
 
 - DEV C++에서 펌웨어 코딩작업
-- Ubuntu 10.0으로 리눅스 환경 실행
+- Ubuntu 10.0 실행
 - gedit "파일명" 입력 후 코드 작성, 저장
 - 명령어 make clean 후 make 입력
 - 명령어 cp MDS2450.bin /tftpboot 입력
