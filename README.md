@@ -1,5 +1,5 @@
 # ARM_firmware Project
-C언어, 삼성 S3C2450 솔루션 보드를 이용하여 만든 펌웨어 팀프로젝트.
+C언어, Samsung S3C2450 솔루션보드를 이용하여 만든 게임프로그램.
 
 ![그림1](https://github.com/ksj32/ARM_firmware/assets/77198732/0f9d1f67-029c-42cf-9c72-bceefcfd10cd)
 
@@ -32,16 +32,16 @@ C언어, 삼성 S3C2450 솔루션 보드를 이용하여 만든 펌웨어 팀프
 
 ## 실행 방법
 
-- DEV C++에서 소스코드 개발
-- Ubuntu 10.0 실행
-- gedit "파일명" 입력 후 코드 작성, 저장
-- 명령어 make clean 후 make 입력
-- 명령어 cp MDS2450.bin /tftpboot 입력
-- TeraTerm 실행 후 동작 확인
+- Windows 환경에서 소스코드 작성(호스트 개발환경)
+- Ubuntu Linux 실행
+- mkdir 명령어로 디렉토리 생성
+- Windows 환경에서 개발한 소스코드 파일들을 Ubuntu Linux 내 디렉토리에 복사
+- 명령어 make clean 입력 후 make 입력하여 컴파일
+- TeraTerm 실행 후 S3C2450(타겟보드)에서 정상적으로 구현되는지 확인
 
 ## 개발 환경
 
-Ubuntu 10.0
+Ubuntu Linux
 
 ## 정보
 
