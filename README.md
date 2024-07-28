@@ -34,7 +34,7 @@ C언어, Samsung S3C2450 솔루션보드를 이용하여 만든 게임프로그�
 
 - Windows 환경에서 소스코드 작성(호스트 개발환경)
 - Ubuntu Linux 실행
-- mkdir 명령어로 디렉토리 생성
+- 터미널에서 디렉토리 생성
 - Windows 환경에서 개발한 소스코드 파일들을 Ubuntu Linux 내 디렉토리에 복사
 - 명령어 make clean 입력 후 make 입력하여 컴파일
 - TeraTerm 실행 후 S3C2450(타겟보드)에서 정상적으로 구현되는지 확인
